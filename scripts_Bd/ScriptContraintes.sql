@@ -19,9 +19,9 @@ GO
 -- Contrainte pour la table PERSONNAGE
 ALTER TABLE PERSONNAGE
 ADD CONSTRAINT PK_PERSONNAGE PRIMARY KEY (NoPersonnage),  -- Cle primaire
-    CONSTRAINT FK_PERSONNAGE FOREIGN KEY (NoJoueur) REFERENCES JOUEUR(NoJoueur) -- Cle etrangere vers JOUEUR
+    CONSTRAINT FK_PERSONNAGE FOREIGN KEY (NoJoueur) REFERENCES JOUEUR(NoJoueur), -- Cle etrangere vers JOUEUR
     CONSTRAINT CHK_PERSONNAGE_VieMax CHECK (VieMax >= 0),  -- Contrainte CHECK pour VieMax, La vie maximale doit etre positive
-    CONSTRAINT CHK_PERSONNAGE_VieRestante CHECK (VieRestante >= 0 AND VieRestante <= VieMax);  -- Contrainte CHECK pour VieRestante, Vie restante entre 0 et VieMax
+    CONSTRAINT CHK_PERSONNAGE_VieRestante CHECK (VieRestante >= 0 AND VieRestante <= VieMax),  -- Contrainte CHECK pour VieRestante, Vie restante entre 0 et VieMax
     CONSTRAINT CHK_PERSONNAGE_Level CHECK (Levels > 0 AND Level <= 5); -- Contrainte CHECK pour vérifier que level se trouve dans l'intervale voulu
 -- Contrainte DEFAULT pour avoir un niveau d'experience par defaut
 ALTER TABLE PERSONNAGE
