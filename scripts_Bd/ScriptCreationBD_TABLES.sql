@@ -1,3 +1,5 @@
+DROP DATABASE BDDorianOwen;
+
 -- Script de creation de la base de donnees
 CREATE DATABASE BDDorianOwen;
 GO
@@ -17,12 +19,12 @@ GO
 -- Table PERSONNAGE
 CREATE TABLE PERSONNAGE (
     NoPersonnage    INT				IDENTITY(1,1),  -- Cle primaire
-    NoJoueur        INT --Not NULL
+    NoJoueur        INT, --Not NULL
     NomPerso        CHAR(15),  -- Not NULL
     Experience      INT,  -- Valeur par defaut
     Argent          INT,  -- Valeur par defaut
     VieMax          DECIMAL(5,2),  -- Not NULL
-    VieRestante     DECIMAL(5,2)-- Not NULL
+    VieRestante     DECIMAL(5,2),-- Not NULL
     Levels          INT -- Not NULL
 );
 GO
