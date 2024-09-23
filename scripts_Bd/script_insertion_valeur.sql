@@ -1,3 +1,6 @@
+USE BDDorianOwen;
+GO
+
 INSERT INTO NIVEAU(Levels, ExpRequis, Titre, GainVie)
     VALUES(1, 50, 'Aspirant', 50),
 		  (2, 100, 'Novice', 125),
