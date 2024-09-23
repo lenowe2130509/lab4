@@ -1,5 +1,5 @@
 DROP DATABASE BDDorianOwen;
-
+GO
 -- Script de creation de la base de donnees
 CREATE DATABASE BDDorianOwen;
 GO
@@ -12,7 +12,8 @@ GO
 CREATE TABLE JOUEUR (
     NoJoueur        INT				IDENTITY(1,1),  -- Cle primaire
     Mail            VARCHAR(100),  -- Not NULL et UNIQUE
-    Mdp             VARCHAR(50)  -- Not NULL
+    Mdp             BINARY(64),  -- Not NULL
+	Sel				UNIQUEIDENTIFIER
 );
 GO
 
@@ -74,8 +75,8 @@ GO
 
 -- Table PROFIL (Table d'intersection entre PERSONNAGE et CLASSE)
 CREATE TABLE PROFIL (
-    NoPersonnage    INT  ,  -- Not NULL
-    NoClasse        INT  ,  -- Not NULL
+    NoPersonnage    INT  NOT NULL,  -- Not NULL
+    NoClasse        INT  NOT NULL,  -- Not NULL
 	  -- Cle primaire composee
 );
 GO

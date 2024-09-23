@@ -5,7 +5,7 @@ GO
 -- Cette procédure va permettre d'initialiser des variables
 CREATE PROCEDURE Connexion (
 	@Mail		VARCHAR(100),
-	@Mdp		VARCHAR(50),
+	@Mdp		BINARY(64),
 	@NoJoueur	INT output
 	)
 AS 
@@ -30,4 +30,4 @@ BEGIN
 			RETURN -1;
 		END;
 END;
-GO;
+GO
