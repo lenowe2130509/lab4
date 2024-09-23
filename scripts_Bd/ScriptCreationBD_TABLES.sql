@@ -33,8 +33,8 @@ GO
 -- Table ARME
 CREATE TABLE ARME (
     NoArme          INT				IDENTITY(1,1),  -- Cle primaire
-    NomArme         VARCHAR(20)  ,  -- Not NULL
-    TypeArme        VARCHAR(15)  ,  -- Not NULL
+    NomArme         VARCHAR(100)  ,  -- Not NULL
+    TypeArme        VARCHAR(100)  ,  -- Not NULL
     Niveau          INT  ,  -- Not NULL
     Descriptions    VARCHAR(100)  ,  -- Not NULL
     Degats          INT    -- Not NULL
@@ -44,8 +44,8 @@ GO
 -- Table ARMURE
 CREATE TABLE ARMURE (
     NoArmure        INT				IDENTITY(1,1),  -- Cle primaire
-    NomArmure       VARCHAR(20)  ,  -- Not NULL
-    TypeArmure      VARCHAR(15)  ,  -- Not NULL
+    NomArmure       VARCHAR(100)  ,  -- Not NULL
+    TypeArmure      VARCHAR(100)  ,  -- Not NULL
     Niveau          INT  ,  -- Not NULL
     Descriptions    VARCHAR(100)  ,  -- Not NULL
     Resistance      INT    -- Not NULL
@@ -68,8 +68,8 @@ CREATE TABLE CLASSE (
     BonusResistance INT  ,  -- Not NULL
     BonusAttaque    INT  ,  -- Not NULL
     BonusVie        INT  ,  -- Not NULL
-    NoArme          INT  ,  -- Not NULL
-    NoArmure        INT   -- Not NULL
+    NoArme          INT  ,  -- Not NULL -- Foreign Key
+    NoArmure        INT   -- Not NULL	-- Foreign Key
 )
 GO
 

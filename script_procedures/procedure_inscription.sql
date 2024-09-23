@@ -1,7 +1,7 @@
 use BDDorianOwen;
 GO
 
-CREATE PROCEDURE inscription(@mail VARCHAR(100), @mdp VARCHAR(50)) AS
+CREATE PROCEDURE Inscription(@mail VARCHAR(100), @mdp VARCHAR(50)) AS
 BEGIN                                                                   -- verifie si il existe un joueur avec cet adresse mail                                                     
     SET NOCOUNT ON;                                                         -- empêche les message lors du lancement du script
     DECLARE @sel UNIQUEIDENTIFIER=NEWID();

@@ -1,12 +1,12 @@
 USE BDDorianOwen;
 GO
 
-INSERT INTO NIVEAU(Levels, ExpRequis, Titre, GainVie)
-    VALUES(1, 50, 'Aspirant', 50),
-		  (2, 100, 'Novice', 125),
-		  (3, 200, 'Aprentis', 250),
-		  (4, 400, 'Confirmé', 375),
-		  (5, 800, 'Maitre', 500);
+INSERT INTO NIVEAU(ExpRequis, Titre, GainVie)
+    VALUES(50, 'Aspirant', 50),
+		  (100, 'Novice', 125),
+		  (200, 'Aprentis', 250),
+		  (400, 'Confirmé', 375),
+		  (800, 'Maitre', 500);
 
 INSERT INTO ARME(NomArme, TypeArme, Niveau, Descriptions, Degats)
     VALUES('Aiguillon pur', 'épée courte', 1, 'une épée légère et maniable', 25),
@@ -26,8 +26,9 @@ INSERT INTO CLASSE(Descriptions, BonusResistance, BonusAttaque, BonusVie, NoArme
 		  ('Le barbare: un combatant violant et fort', 9, 8, 3, 3, 3),
 		  ('L assassin: un combatant discret et agile', 2, 5, 9, 4, 4);
 
-INSERT INTO JOUEUR(Mail, Mdp)
-    VALUES('tatayoyo@gmail.com', 'j aipasd idee');
+INSERT INTO JOUEUR(Mail, Mdp, Sel)
+    VALUES('tatayoyo@gmail.com', HASHBYTES('SHA2_512', 'j aipasd idee'), NEWID());  
+							 -- Hachage du mot de passe -- Génération d'un identifiant unique pour la colonne Sel);
 
 INSERT INTO PERSONNAGE(NomPerso, VieMax, VieRestante, NoJoueur, Levels)
     VALUES('Theophil', 0, 0, 1, 1),
