@@ -1,7 +1,7 @@
 USE BDDorianOwen;
 GO
 
-CREATE VIEW STATISTIQUE AS																									-- cette vue prend sert a afficer les info generale du perso
+CREATE VIEW STATISTIQUE AS																									-- cette vue sert a afficher les info generale du perso
     SELECT NomPerso, VieMax, Levels, Degats, Resistance, CLASSE.Descriptions, BonusResistance, BonusAttaque, BonusVie
     FROM PERSONNAGE
     JOIN PROFIL
@@ -36,7 +36,7 @@ CREATE VIEW AMELIORER_ARMURE AS																								-- cette vue recupere le 
         ON CLASSE.NoArmure = ARMURE.NoArmure;
 GO
 
-CREATE VIEW AUGMANTER_VIE AS
+CREATE VIEW AUGMANTER_VIE AS																								-- cette vue perme de savoir quelle sera la vie maximale du perso après un gain de niveau
     SELECT SUM(VieMax + GainVie) AS Amelioration_vie
     FROM PERSONNAGE
     JOIN NIVEAU
