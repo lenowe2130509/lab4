@@ -1,4 +1,4 @@
-use BDDorianOwen;
+use 2024_PROG3_RPGMANAGER;
 GO
 
 CREATE PROCEDURE Inscription(@mail VARCHAR(100), @mdp VARCHAR(50)) AS

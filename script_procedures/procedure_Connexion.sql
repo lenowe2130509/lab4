@@ -1,4 +1,4 @@
-USE BDDorianOwen;
+USE 2024_PROG3_RPGMANAGER;
 GO
 
 -- Cree une procedure du nom de Connexion
