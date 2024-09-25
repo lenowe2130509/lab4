@@ -36,9 +36,13 @@ CREATE VIEW AMELIORER_ARMURE AS																								-- cette vue recupere le 
         ON CLASSE.NoArmure = ARMURE.NoArmure;
 GO
 
-CREATE VIEW AUGMANTER_VIE AS																								-- cette vue perme de savoir quelle sera la vie maximale du perso après un gain de niveau
-    SELECT SUM(VieMax + GainVie) AS Amelioration_vie
+CREATE VIEW AUGMANTER_VIE AS																								-- cette vue permet de savoir quelle sera la vie maximale du perso aprï¿½s un gain de niveau
+    SELECT (VieMax + GainVie)*(BonusVie/100 + 1) AS Amelioration_vie
     FROM PERSONNAGE
     JOIN NIVEAU
         ON PERSONNAGE.Levels = NIVEAU.Levels;
+    JOIN PROFIL
+        ON PERSONNAGE.NoPersonnage = PROFIL.NoPersonnage
+    JOIN CLASSE
+        ON PROFIL.NoClasse = CLASSE.NoClasse
 GO
