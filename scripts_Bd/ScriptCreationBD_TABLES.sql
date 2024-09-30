@@ -1,7 +1,7 @@
-DROP DATABASE BDDorianOwen;
+DROP DATABASE 2024_PROG3_RPGMANAGER;
 GO
 -- Script de creation de la base de donnees
-CREATE DATABASE BDDorianOwen;
+CREATE DATABASE 2024_PROG3_RPGMANAGER;
 GO
 
 -- Selection de la base de donnees pour travailler dessus

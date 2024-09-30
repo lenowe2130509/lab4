@@ -1,4 +1,4 @@
-USE BDDorianOwen;
+USE 2024_PROG3_RPGMANAGER;
 GO
 
 CREATE VIEW STATISTIQUE AS																									-- cette vue sert a afficher les info generale du perso

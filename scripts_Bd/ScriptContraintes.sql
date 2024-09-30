@@ -1,6 +1,6 @@
 -- Script pour ajouter toutes les contraintes CHECK et les cles etrangeres apres la creation des tables
 
-USE BDDorianOwen; 
+USE 2024_PROG3_RPGMANAGER; 
 GO
 
 	-- NOT NULL de la Table Joueur
