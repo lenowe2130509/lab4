@@ -1,8 +1,8 @@
-USE 2024_PROG3_RPGMANAGER;
+USE [2024_PROG3_RPGMANAGER];
 GO
 
 -- Cree une procedure du nom de Connexion
--- Cette procédure va permettre d'initialiser des variables
+-- Cette procedure va permettre d'initialiser des variables
 CREATE PROCEDURE Connexion (
 	@Mail		VARCHAR(100),
 	@Mdp		BINARY(64),

@@ -1,4 +1,4 @@
-USE 2024_PROG3_RPGMANAGER;
+USE [2024_PROG3_RPGMANAGER];
 GO
 
 INSERT INTO NIVEAU(ExpRequis, Titre, GainVie)
@@ -30,11 +30,11 @@ INSERT INTO JOUEUR(Mail, Mdp, Sel)
     VALUES('tatayoyo@gmail.com', HASHBYTES('SHA2_512', 'j aipasd idee'), NEWID());  
 							 -- Hachage du mot de passe -- Génération d'un identifiant unique pour la colonne Sel);
 
-INSERT INTO PERSONNAGE(NomPerso, VieMax, VieRestante, NoJoueur, Levels)
-    VALUES('Theophil',  0, 0, 1, 1),
-		  ('Julius',	0, 0, 1, 1),
-		  ('Jorund',	0, 0, 1, 1),
-		  ('Bob',		0, 0, 1, 1);
+INSERT INTO PERSONNAGE(NomPerso, VieMax, VieRestante, NoJoueur, Levels, Experience)
+    VALUES('Theophil',  0, 0, 1, 0, 0),
+		  ('Julius',	0, 0, 1, 0, 0),
+		  ('Jorund',	0, 0, 1, 0, 0),
+		  ('Bob',		0, 0, 1, 0, 0);
 
 INSERT INTO PROFIL(NoPersonnage, NoClasse)
     VALUES(1, 1),
