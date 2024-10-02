@@ -31,10 +31,10 @@ INSERT INTO JOUEUR(Mail, Mdp, Sel)
 							 -- Hachage du mot de passe -- Génération d'un identifiant unique pour la colonne Sel);
 
 INSERT INTO PERSONNAGE(NomPerso, VieMax, VieRestante, NoJoueur, Levels, Experience)
-    VALUES('Theophil',  0, 0, 1, 0, 0),
-		  ('Julius',	0, 0, 1, 0, 0),
-		  ('Jorund',	0, 0, 1, 0, 0),
-		  ('Bob',		0, 0, 1, 0, 0);
+    VALUES('Theophil',  50, 50, 1, 1, 0),
+		  ('Julius',	50, 50, 1, 1, 0),
+		  ('Jorund',	50, 50, 1, 1, 0),
+		  ('Bob',		50, 50, 1, 1, 0);
 
 INSERT INTO PROFIL(NoPersonnage, NoClasse)
     VALUES(1, 1),

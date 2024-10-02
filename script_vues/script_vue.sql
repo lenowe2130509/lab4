@@ -49,7 +49,7 @@ DROP VIEW IF EXISTS AUGMENTER_VIE;
 GO
 
 CREATE VIEW AUGMENTER_VIE AS																								-- cette vue permet de savoir quelle sera la vie maximale du perso apr�s un gain de niveau
-    SELECT (VieMax + GainVie)*(BonusVie/100 + 1) AS Amelioration_vie
+    SELECT ((VieMax + GainVie)*(BonusVie/100 + 1)) AS Amelioration_vie
     FROM PERSONNAGE
     JOIN NIVEAU
         ON PERSONNAGE.Levels = NIVEAU.Levels
