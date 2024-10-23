@@ -1,11 +1,14 @@
-DROP DATABASE 2024_PROG3_RPGMANAGER;
+USE master;
+GO
+
+DROP DATABASE [2024_PROG3_RPGMANAGER];
 GO
 -- Script de creation de la base de donnees
-CREATE DATABASE 2024_PROG3_RPGMANAGER;
+CREATE DATABASE [2024_PROG3_RPGMANAGER];
 GO
 
 -- Selection de la base de donnees pour travailler dessus
-USE BDDorianOwen;
+USE [2024_PROG3_RPGMANAGER];
 GO
 
 -- Table JOUEUR
