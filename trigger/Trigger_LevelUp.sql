@@ -1,28 +1,53 @@
 USE [2024_PROG3_RPGMANAGER];
+<<<<<<< HEAD
+=======
+GO
+
+DROP TRIGGER IF EXISTS LevelUp;
+>>>>>>> 5dace44258aac35bf0ff24635e277828cfae8b39
 GO
 
 CREATE TRIGGER LevelUp
 ON PERSONNAGE
 AFTER UPDATE AS
-IF UPDATE (Experience) BEGIN
-	DECLARE @Experience AS INT
-	DECLARE @ExpRequis AS INT
-	DECLARE @Levels AS INT
-	DECLARE @VieMax AS DECIMAL
-	DECLARE @VieRestante AS DECIMAL
-	DECLARE cUpdate CURSOR FOR 
-	SELECT Experience, ExpRequis, PERSONNAGE.Levels, VieMax, VieRestante 
-	FROM PERSONNAGE 
-	JOIN NIVEAU ON NIVEAU.Levels = PERSONNAGE.Levels;
-	OPEN cUpdate;
-	FETCH cUpdate INTO @Experience, @ExpRequis, @Levels, @VieMax, @VieRestante;
-	--Tant que le status n'a pas d'erreur on fait 
-	While (@@FETCH_STATUS=0) BEGIN
-	-- Si l'expérience est égale ou supérieur à l'experience Requise alors on update toutes les statistiques nécessaire 
-		IF (@Experience >= @ExpRequis) BEGIN
-			UPDATE PERSONNAGE SET Experience = 0, Levels = @Levels+1;
-			UPDATE PERSONNAGE SET VieMax = AUGMENTER_VIE, VieRestante = AUGMENTER_VIE;
-		END;
-		FETCH cUpdate INTO @Experience, @ExpRequis, @GainVie, @Levels, @VieMax, @VieRestante; --Ligne Suivante
-	END;
+BEGIN
+    IF UPDATE (Experience)
+    BEGIN
+        DECLARE @Experience AS INT;
+        DECLARE @ExpRequis AS INT;
+        DECLARE @Levels AS INT;
+        DECLARE @NoPerso AS INT;
+
+        DECLARE cUpdate CURSOR LOCAL FOR 
+        SELECT p.Experience, n.ExpRequis, p.Levels, p.NoPersonnage
+        FROM PERSONNAGE p
+        JOIN NIVEAU n ON n.Levels = p.Levels
+        WHERE p.NoPersonnage IN (SELECT NoPersonnage FROM inserted); -- Only updated characters
+
+        OPEN cUpdate;
+        FETCH cUpdate INTO @Experience, @ExpRequis, @Levels, @NoPerso;
+
+        WHILE (@@FETCH_STATUS = 0) 
+        BEGIN
+            IF (@Experience >= @ExpRequis) 
+            BEGIN
+                BEGIN TRANSACTION;
+
+                UPDATE PERSONNAGE 
+                SET 
+                    Levels = Levels + 1, 
+                    VieMax = (SELECT TOP 1 VieMax FROM AUGMENTER_VIE WHERE NoPersonnage = @NoPerso),
+                    VieRestante = (SELECT TOP 1 VieMax FROM AUGMENTER_VIE WHERE NoPersonnage = @NoPerso), 
+                    Experience = 0
+                WHERE NoPersonnage = @NoPerso;
+
+                COMMIT TRANSACTION;
+            END;
+
+            FETCH cUpdate INTO @Experience, @ExpRequis, @Levels, @NoPerso; -- Next row
+        END;
+
+        CLOSE cUpdate;
+        DEALLOCATE cUpdate;
+    END;
 END;
