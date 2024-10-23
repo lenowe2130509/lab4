@@ -1,14 +1,10 @@
-<<<<<<< HEAD
 DROP VIEW IF EXISTS STATISTIQUE, AMELIORER_ARME, AMELIORER_ARMURE, AUGMENTER_VIE
 GO
 
 USE [2024_PROG3_RPGMANAGER];
-=======
-USE [2024_PROG3_RPGMANAGER];
 GO
 
 DROP VIEW IF EXISTS STATISTIQUE;
->>>>>>> 5dace44258aac35bf0ff24635e277828cfae8b39
 GO
 
 CREATE VIEW STATISTIQUE AS																									-- cette vue sert a afficher les info generale du perso
@@ -52,16 +48,12 @@ CREATE VIEW AMELIORER_ARMURE AS																								-- cette vue recupere le 
         ON CLASSE.NoArmure = ARMURE.NoArmure;
 GO
 
-<<<<<<< HEAD
-CREATE VIEW AUGMENTER_VIE AS																								-- cette vue permet de savoir quelle sera la vie maximale du perso apr�s un gain de niveau
-    SELECT (VieMax + GainVie)*(BonusVie/100 + 1) AS Amelioration_vie
-=======
 DROP VIEW IF EXISTS AUGMENTER_VIE;
 GO
 
-CREATE VIEW AUGMENTER_VIE AS																								-- cette vue permet de savoir quelle sera la vie maximale du perso apr�s un gain de niveau
-    SELECT ((VieMax + GainVie)*(BonusVie/100 + 1)) AS Amelioration_vie
->>>>>>> 5dace44258aac35bf0ff24635e277828cfae8b39
+
+CREATE VIEW AUGMENTER_VIE AS																								-- cette vue permet de savoir quelle sera la vie maximale du perso apres un gain de niveau
+    SELECT PERSONNAGE.NoPersonnage AS NoPerso, (VieMax + GainVie) AS Amelioration_vie
     FROM PERSONNAGE
     JOIN NIVEAU
         ON PERSONNAGE.Levels = NIVEAU.Levels
@@ -69,8 +61,4 @@ CREATE VIEW AUGMENTER_VIE AS																								-- cette vue permet de savoi
         ON PERSONNAGE.NoPersonnage = PROFIL.NoPersonnage
     JOIN CLASSE
         ON PROFIL.NoClasse = CLASSE.NoClasse;
-<<<<<<< HEAD
 GO
-=======
-    GO
->>>>>>> 5dace44258aac35bf0ff24635e277828cfae8b39

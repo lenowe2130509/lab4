@@ -1,10 +1,7 @@
 USE [2024_PROG3_RPGMANAGER];
-<<<<<<< HEAD
-=======
 GO
 
 DROP TRIGGER IF EXISTS LevelUp;
->>>>>>> 5dace44258aac35bf0ff24635e277828cfae8b39
 GO
 
 CREATE TRIGGER LevelUp
@@ -22,7 +19,7 @@ BEGIN
         SELECT p.Experience, n.ExpRequis, p.Levels, p.NoPersonnage
         FROM PERSONNAGE p
         JOIN NIVEAU n ON n.Levels = p.Levels
-        WHERE p.NoPersonnage IN (SELECT NoPersonnage FROM inserted); -- Only updated characters
+        WHERE p.NoPersonnage IN (SELECT NoPersonnage FROM inserted); 
 
         OPEN cUpdate;
         FETCH cUpdate INTO @Experience, @ExpRequis, @Levels, @NoPerso;
@@ -33,11 +30,12 @@ BEGIN
             BEGIN
                 BEGIN TRANSACTION;
 
+
                 UPDATE PERSONNAGE 
                 SET 
-                    Levels = Levels + 1, 
-                    VieMax = (SELECT TOP 1 VieMax FROM AUGMENTER_VIE WHERE NoPersonnage = @NoPerso),
-                    VieRestante = (SELECT TOP 1 VieMax FROM AUGMENTER_VIE WHERE NoPersonnage = @NoPerso), 
+                    Levels += 1 ,
+                    VieMax = (SELECT * FROM AUGMENTER_VIE WHERE NoPersonnage = 1),
+                    VieRestante = (SELECT Amelioration_vie FROM AUGMENTER_VIE JOIN PERSONNAGE ON PERSONNAGE.NoPersonnage = AUGMENTER_VIE. WHERE NoPersonnage = @NoPerso), 
                     Experience = 0
                 WHERE NoPersonnage = @NoPerso;
 

@@ -2,11 +2,11 @@ USE [2024_PROG3_RPGMANAGER];
 GO
 
 INSERT INTO NIVEAU(ExpRequis, Titre, GainVie)
-    VALUES(50, 'Aspirant',	50),
-		  (100, 'Novice',	125),
-		  (200, 'Aprentis', 250),
-		  (400, 'Confirmé', 375),
-		  (800, 'Maitre',	500);
+    VALUES(50, 'Aspirant',	125),
+		  (100, 'Novice',	250),
+		  (200, 'Aprentis', 375),
+		  (400, 'Confirmé', 500),
+		  (800, 'Maitre',	700);
 
 INSERT INTO ARME(NomArme, TypeArme, Niveau, Descriptions, Degats)
     VALUES('Aiguillon pur',			'épée courte',		1, 'une épée légère et maniable',											25),
