@@ -34,8 +34,8 @@ BEGIN
                 UPDATE PERSONNAGE 
                 SET 
                     Levels += 1 ,
-                    VieMax = (SELECT * FROM AUGMENTER_VIE WHERE NoPersonnage = 1),
-                    VieRestante = (SELECT Amelioration_vie FROM AUGMENTER_VIE JOIN PERSONNAGE ON PERSONNAGE.NoPersonnage = AUGMENTER_VIE. WHERE NoPersonnage = @NoPerso), 
+                    VieMax = (SELECT Amelioration_vie FROM AUGMENTER_VIE JOIN PERSONNAGE ON PERSONNAGE.NoPersonnage = AUGMENTER_VIE.NoPerso WHERE NoPersonnage = @NoPerso),
+                    VieRestante = (SELECT Amelioration_vie FROM AUGMENTER_VIE JOIN PERSONNAGE ON PERSONNAGE.NoPersonnage = AUGMENTER_VIE.NoPerso WHERE NoPersonnage = @NoPerso), 
                     Experience = 0
                 WHERE NoPersonnage = @NoPerso;
 

@@ -10,7 +10,7 @@ UPDATE PERSONNAGE SET Experience = 100
 SELECT *
 FROM PERSONNAGE;
 
-UPDATE PERSONNAGE SET Experience = 0, Levels = 1
+UPDATE PERSONNAGE SET Experience = 0, Levels = 1, VieMax = 50, VieRestante = 50
 	WHERE NoPersonnage = 1;
 
 SELECT * FROM AUGMENTER_VIE;
